@@ -48,7 +48,7 @@ def parttwo(data):
                 d = sum(10**(k) for k in range(0,digs,n)) 
                 # d: divisor of invalid id, ie number consisting of digs/n repeats of n figures
                 burp = b // d - (a-1) // d
-                # number of such numbers in the ranga a -- b
+                # number of such numbers in the range a -- b
                 for k in range(burp):
                     # get the invalid ids
                     invalid_id = ((((a-1)//d) + 1 + k)*d)
