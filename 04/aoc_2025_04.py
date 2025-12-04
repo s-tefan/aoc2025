@@ -39,11 +39,16 @@ def parttwo(data):
         liftable = set()
         for roll in s:
             num = -1
+            '''
             for k in (-1,0,1):
                 for l in (-1,0,1):
                     if (roll[0]+l,roll[1]+k) in s:
                         num += 1      
             if num < 4:
+                liftable.add(roll)
+            '''
+            # variant with list comprehesion:
+            if [(roll[0]+l,roll[1]+k) in s for k in (-1,0,1)  for l in (-1,0,1)].count(True) < 5:
                 liftable.add(roll)
         s.difference_update(liftable)
         done = not bool(liftable)
