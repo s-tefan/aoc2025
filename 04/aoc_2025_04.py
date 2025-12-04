@@ -32,10 +32,9 @@ def partone(data):
     return n_liftable
 
 def parttwo(data):
-    s = fixdata(data)
+    s = fixdata(data) # Set of coordinates for paper rolls
     ns = len(s)
-    done = False
-    while not done:
+    while True: # Repeat until no liftable rolls left
         liftable = set()
         for roll in s:
             num = -1
@@ -47,11 +46,12 @@ def parttwo(data):
             if num < 4:
                 liftable.add(roll)
             '''
-            # variant with list comprehesion:
+            # instead using list comprehesion:
             if [(roll[0]+l,roll[1]+k) in s for k in (-1,0,1)  for l in (-1,0,1)].count(True) < 5:
                 liftable.add(roll)
+        if not bool(liftable):
+            break
         s.difference_update(liftable)
-        done = not bool(liftable)
     return ns-len(s)
 
 ap = AOC(4,'input')
