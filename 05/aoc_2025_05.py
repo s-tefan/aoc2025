@@ -24,6 +24,12 @@ def fixdata(data):
             range_mode = False
     return ranges, ids
 
+def check(id, ranges):
+    for r in ranges:
+        if id in r:
+            return True
+    return False
+
 def normalize(ranges):
     ranges.sort(key = lambda x: x.start)
     k=0
