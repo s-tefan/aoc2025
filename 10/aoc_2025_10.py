@@ -42,9 +42,9 @@ def combinations(m,k):
     return  [a|{e} for e in m for a in combinations(m-{e},k-1)]
 
 
-def presses_needed(nl, light, pset):
+def presses_needed(nl, light, presses):
     for np in range(1,nl+1):
-        pcombs = combinations(pset, np)
+        pcombs = combinations(set(presses), np)
         for ps in pcombs:
             s = light
             for p in ps:
@@ -56,7 +56,7 @@ def presses_needed(nl, light, pset):
 
 
 def partone(data):
-    return sum(presses_needed(nl, light, set(presses)) \
+    return sum(presses_needed(nl, light, presses) \
         for nl, light, presses, _ in fixdata(data))
 
 
